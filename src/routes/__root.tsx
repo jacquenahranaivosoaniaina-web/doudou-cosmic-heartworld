@@ -85,7 +85,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Doudou, My Universe" },
       { name: "description", content: "Notre système solaire, notre histoire, notre aventure…" },
       { property: "og:title", content: "Doudou, My Universe" },
-      { property: "og:description", content: "Notre système solaire, notre histoire, notre aventure…" },
+      {
+        property: "og:description",
+        content: "Notre système solaire, notre histoire, notre aventure…",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -99,7 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=JetBrains+Mono:wght@300;400&family=Manrope:wght@300;400;500&display=swap",
       },
     ],
   }),

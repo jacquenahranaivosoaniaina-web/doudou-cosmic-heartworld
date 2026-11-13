@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 
+import nebula from "@/assets/nebula.jpg";
+import { Starfield } from "@/components/Starfield";
+
 type Heart = { left: string; top: string; delay: string };
 
-/** Ambient background: rotating nebula, drifting stars and floating hearts. */
+/** Ambient background: nebula photo, 3D starfield, floating hearts and a faint HUD scanline. */
 export function Cosmos() {
   const [hearts, setHearts] = useState<Heart[]>([]);
 
@@ -19,7 +22,10 @@ export function Cosmos() {
   return (
     <>
       <div className="cosmos-nebula" aria-hidden />
-      <div className="cosmos-stars" aria-hidden />
+      <img className="cosmos-photo" src={nebula} alt="" aria-hidden width={1920} height={1088} />
+      <Starfield />
+      <div className="cosmos-vignette" aria-hidden />
+      <div className="hud-scan" aria-hidden />
       {hearts.map((h, i) => (
         <span
           key={i}
