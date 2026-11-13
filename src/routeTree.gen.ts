@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UniversIndexRouteImport } from './routes/univers.index'
+import { Route as UniversPlanetRouteImport } from './routes/univers.$planet'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UniversIndexRoute = UniversIndexRouteImport.update({
+  id: '/univers/',
+  path: '/univers/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UniversPlanetRoute = UniversPlanetRouteImport.update({
+  id: '/univers/$planet',
+  path: '/univers/$planet',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/univers/$planet': typeof UniversPlanetRoute
+  '/univers/': typeof UniversIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/univers/$planet': typeof UniversPlanetRoute
+  '/univers': typeof UniversIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/univers/$planet': typeof UniversPlanetRoute
+  '/univers/': typeof UniversIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/univers/$planet' | '/univers/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/univers/$planet' | '/univers'
+  id: '__root__' | '/' | '/univers/$planet' | '/univers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  UniversPlanetRoute: typeof UniversPlanetRoute
+  UniversIndexRoute: typeof UniversIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/univers/': {
+      id: '/univers/'
+      path: '/univers'
+      fullPath: '/univers/'
+      preLoaderRoute: typeof UniversIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/univers/$planet': {
+      id: '/univers/$planet'
+      path: '/univers/$planet'
+      fullPath: '/univers/$planet'
+      preLoaderRoute: typeof UniversPlanetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  UniversPlanetRoute: UniversPlanetRoute,
+  UniversIndexRoute: UniversIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

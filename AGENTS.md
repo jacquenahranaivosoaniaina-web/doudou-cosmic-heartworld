@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Story content (planets, texts, secret code) lives in `src/lib/universe.ts`; pages read from it so copy changes stay in one place.
+- The secret code is a client-side gate stored in sessionStorage (`useUnlocked`), not real authentication; never put private data behind it.
+- All colors, gradients and animations are tokens/classes in `src/styles.css`; components use those classes, never raw colors.
