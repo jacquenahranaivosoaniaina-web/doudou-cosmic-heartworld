@@ -478,7 +478,7 @@
   background:
     repeating-linear-gradient(168deg, transparent 0 9%, color-mix(in oklch, var(--planet-deep) 45%, transparent) 9% 14%, transparent 14% 22%, color-mix(in oklch, var(--star-1) 18%, transparent) 22% 24%);
   background-size: 220% 100%;
-  mix-blend-mode: soft-light;
+  opacity: 0.55;
   animation: orb-turn 22s linear infinite;
 }
 @keyframes orb-turn { to { background-position: 220% 0; } }
@@ -536,8 +536,7 @@
   inset: -40%;
   border-radius: 50%;
   background: conic-gradient(from 0deg, transparent, var(--sun-halo), transparent 20%, color-mix(in oklch, var(--sun-glow) 35%, transparent) 35%, transparent 50%, var(--sun-halo) 70%, transparent 85%);
-  filter: blur(10px);
-  mask-image: radial-gradient(circle, black 35%, transparent 70%);
+  mask-image: radial-gradient(circle, black 30%, transparent 70%);
   animation: corona-spin 24s linear infinite;
 }
 @keyframes corona-spin { to { transform: rotate(360deg); } }
@@ -779,8 +778,8 @@
   height: 112%;
   object-fit: cover;
   border-radius: 50%;
-  mix-blend-mode: screen;
-  opacity: 0.22;
+  /* No blend mode here: it flattens the 3D planets in Chromium. */
+  opacity: 0.3;
   mask-image: radial-gradient(circle, black 25%, transparent 66%);
   pointer-events: none;
   animation: orbit-spin 220s linear infinite reverse;

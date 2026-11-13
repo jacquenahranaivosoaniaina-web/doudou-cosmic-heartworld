@@ -80,34 +80,32 @@ function PlanetDetail() {
           <p className="archive-text my-4">{planet.body}</p>
           <PlanetExtra planet={planet} />
           <div className="hud-divider my-6" />
-          <div className="flex flex-wrap items-center justify-center gap-3 md:justify-between">
-            {prev && (
-              <Link
-                to="/univers/$planet"
-                params={{ planet: prev.slug }}
-                className="nav-chip hud-mono"
-                onClick={() => warp(0.3, 450)}
-              >
-                ← {prev.name}
-              </Link>
-            )}
-            <Link
-              to="/univers"
-              className="cosmic-btn cosmic-btn-ghost"
-              onClick={() => warp(0.3, 450)}
-            >
-              ◎ Système solaire
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex w-full flex-wrap items-center justify-between gap-3">
+              {prev && (
+                <Link
+                  to="/univers/$planet"
+                  params={{ planet: prev.slug }}
+                  className="nav-chip hud-mono hud-mono-bright"
+                  onClick={() => warp(0.3, 450)}
+                >
+                  ← {prev.name}
+                </Link>
+              )}
+              {next && (
+                <Link
+                  to="/univers/$planet"
+                  params={{ planet: next.slug }}
+                  className="nav-chip hud-mono hud-mono-bright"
+                  onClick={() => warp(0.3, 450)}
+                >
+                  {next.name} →
+                </Link>
+              )}
+            </div>
+            <Link to="/univers" className="cosmic-btn cosmic-btn-ghost" onClick={() => warp(0.3, 450)}>
+              ◎ Retour au système solaire
             </Link>
-            {next && (
-              <Link
-                to="/univers/$planet"
-                params={{ planet: next.slug }}
-                className="nav-chip hud-mono"
-                onClick={() => warp(0.3, 450)}
-              >
-                {next.name} →
-              </Link>
-            )}
           </div>
         </article>
       </div>
