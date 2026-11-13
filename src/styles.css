@@ -564,6 +564,11 @@
 }
 .solar-sun {
   --sun-size: clamp(46px, 12%, 92px);
+  display: grid;
+  place-items: center;
+  width: calc(var(--sun-size) * 3.6);
+  aspect-ratio: 1;
+  pointer-events: none;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -596,12 +601,14 @@
   pointer-events: none;
   animation: orbit-spin 120s linear infinite;
 }
+/* Real-sized box centred on the orbit point: 3D layers clip to their own bounds. */
 .planet-holder {
   position: absolute;
   left: 50%;
   top: 0;
-  width: 0;
-  height: 0;
+  width: 180px;
+  height: 150px;
+  margin: -75px 0 0 -90px;
   animation: counter-spin var(--period) linear infinite;
   animation-delay: var(--phase);
 }
@@ -614,8 +621,8 @@
 }
 .planet-link {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 50%;
+  top: 50%;
   translate: -50% -50%;
   display: block;
   border-radius: 50%;
@@ -641,8 +648,8 @@
 @keyframes target-spin { to { rotate: 360deg; } }
 .planet-label {
   position: absolute;
-  left: 0;
-  top: calc(var(--size) / 2 + 10px);
+  left: 50%;
+  top: calc(50% + var(--size) / 2 + 10px);
   translate: -50% 0;
   font-family: var(--font-mono);
   font-size: 8px;
