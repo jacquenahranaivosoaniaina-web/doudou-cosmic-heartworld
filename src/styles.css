@@ -757,7 +757,17 @@
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
 
-/* Faint galaxy disc lying in the orbital plane */
+/* Faint galaxy disc lying in the orbital plane (its own layer, outside the 3D context) */
+.solar-galaxy-plane {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  transform: rotateX(var(--tilt));
+  pointer-events: none;
+}
 .solar-galaxy {
   position: absolute;
   inset: -6%;
