@@ -85,7 +85,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Doudou, My Universe" },
       { name: "description", content: "Notre système solaire, notre histoire, notre aventure…" },
       { property: "og:title", content: "Doudou, My Universe" },
-      { property: "og:description", content: "Notre système solaire, notre histoire, notre aventure…" },
+      {
+        property: "og:description",
+        content: "Notre système solaire, notre histoire, notre aventure…",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

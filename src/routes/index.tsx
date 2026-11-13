@@ -18,7 +18,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Doudou, My Universe" },
       {
         property: "og:description",
-        content: "Notre système solaire, notre histoire, notre aventure… Un univers rien qu'à nous deux.",
+        content:
+          "Notre système solaire, notre histoire, notre aventure… Un univers rien qu'à nous deux.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

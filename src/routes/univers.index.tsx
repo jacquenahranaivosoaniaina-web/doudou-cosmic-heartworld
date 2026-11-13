@@ -14,7 +14,8 @@ export const Route = createFileRoute("/univers/")({
       { title: "Notre système solaire — Doudou, My Universe" },
       {
         name: "description",
-        content: "Cinq mondes, cinq fragments de notre histoire. Touche une planète pour t'en approcher.",
+        content:
+          "Cinq mondes, cinq fragments de notre histoire. Touche une planète pour t'en approcher.",
       },
       { property: "og:title", content: "Notre système solaire — Doudou, My Universe" },
       { property: "og:description", content: "Cinq mondes, cinq fragments de notre histoire." },
@@ -43,12 +44,21 @@ function SolarSystem() {
 
       <div className="eyebrow">BIENVENUE CHEZ NOUS</div>
       <h1 className="m-3 text-[clamp(38px,6vw,64px)]">Notre système solaire</h1>
-      <p className="serif-italic text-[19px] text-haze">Cinq mondes, cinq fragments de notre histoire.</p>
+      <p className="serif-italic text-[19px] text-haze">
+        Cinq mondes, cinq fragments de notre histoire.
+      </p>
 
       <div className="mt-6 grid w-full max-w-6xl items-center gap-6 lg:grid-cols-[minmax(0,1fr)_260px]">
         <div className={`solar-stage ${active !== null ? "solar-paused" : ""}`}>
           <div className="solar-plane">
-            <img className="solar-galaxy" src={galaxy} alt="" aria-hidden width={1024} height={1024} />
+            <img
+              className="solar-galaxy"
+              src={galaxy}
+              alt=""
+              aria-hidden
+              width={1024}
+              height={1024}
+            />
             <span className="asteroid-belt" aria-hidden />
             {PLANETS.map((planet, i) => {
               const style = {

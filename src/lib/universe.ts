@@ -74,7 +74,11 @@ export const PLANETS: Planet[] = [
     name: "Notre petit monde",
     intro: "Notre bonheur, à notre façon.",
     body: "Un petit monde à nous, fait de complicité, de rires et de détails que nous seuls pouvons comprendre.",
-    extra: { kind: "reveal", button: "Découvrir un défi", message: "Petit défi de notre duo à découvrir bientôt !" },
+    extra: {
+      kind: "reveal",
+      button: "Découvrir un défi",
+      message: "Petit défi de notre duo à découvrir bientôt !",
+    },
   },
   {
     slug: "notre-avenir",
@@ -83,7 +87,11 @@ export const PLANETS: Planet[] = [
     name: "Notre avenir",
     intro: "Tant de rêves à vivre ensemble.",
     body: "Des projets, des voyages, des rêves… et encore tant de pages à écrire ensemble.",
-    extra: { kind: "reveal", button: "Mission secrète", message: "Imagine notre prochaine aventure à deux." },
+    extra: {
+      kind: "reveal",
+      button: "Mission secrète",
+      message: "Imagine notre prochaine aventure à deux.",
+    },
   },
   {
     slug: "mon-univers",
