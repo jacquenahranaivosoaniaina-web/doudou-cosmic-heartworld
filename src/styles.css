@@ -109,9 +109,11 @@
   * {
     border-color: var(--color-border);
   }
-  html,
-  body {
+  /* Background on html only: a body background would paint over the fixed cosmos layers. */
+  html {
     background-color: var(--color-background);
+  }
+  body {
     color: var(--color-foreground);
     font-family: var(--font-sans);
     overflow-x: hidden;
