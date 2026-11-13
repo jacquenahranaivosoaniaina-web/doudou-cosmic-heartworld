@@ -254,8 +254,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 78px;
-  height: 78px;
+  width: clamp(40px, 12%, 78px);
+  aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 25%, var(--sun-core), var(--sun-mid) 25%, var(--sun-edge) 60%, var(--sun-rim));
   box-shadow: 0 0 35px var(--sun-glow), 0 0 100px var(--sun-halo);

@@ -48,7 +48,13 @@ function SolarSystem() {
             <div
               key={planet.slug}
               className="orbit"
-              style={{ width: orbit.size, height: orbit.size, animationDuration: orbit.duration }}
+              style={{
+                width: orbit.size,
+                height: orbit.size,
+                animationDuration: orbit.duration,
+                // Spread planets around their orbits instead of lining them up at the start.
+                animationDelay: `calc(${orbit.duration} * -${(i * 0.37) % 1})`,
+              }}
             >
               <Link
                 to="/univers/$planet"
