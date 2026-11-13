@@ -756,3 +756,18 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* Faint galaxy disc lying in the orbital plane */
+.solar-galaxy {
+  position: absolute;
+  inset: -6%;
+  width: 112%;
+  height: 112%;
+  object-fit: cover;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  opacity: 0.22;
+  mask-image: radial-gradient(circle, black 25%, transparent 66%);
+  pointer-events: none;
+  animation: orbit-spin 220s linear infinite reverse;
+}
