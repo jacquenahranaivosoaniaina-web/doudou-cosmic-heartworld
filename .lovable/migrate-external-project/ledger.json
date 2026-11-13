@@ -1,0 +1,19 @@
+{
+  "source": "code-archive: DOUDOU_MY_UNIVERSE_MAQUETTE_STYLISEE_1.zip (static index.html mockup)",
+  "capabilities": [
+    {"capability": "code", "source": "index.html (3 screens: secret-code home, solar system, planet detail)", "outcome": "rebuild as TanStack routes / , /univers, /univers/$planet", "status": "in_progress", "next_action": "build and verify in browser"},
+    {"capability": "design", "source": "inline CSS: nebula, starfield, orbits, Cormorant Garamond + Manrope", "outcome": "port to design tokens in src/styles.css", "status": "in_progress", "next_action": "verify visually"},
+    {"capability": "secret code gate", "source": "client-side check for code DOUDOU", "outcome": "preserve as client-side gate (not real authentication)", "status": "in_progress", "next_action": "unit test + browser check"},
+    {"capability": "interactions", "source": "alerts for defi/mission, countdown 5..0 then surprise", "outcome": "preserve; alerts become inline reveals", "status": "in_progress", "next_action": "browser check"},
+    {"capability": "schema", "source": "none", "outcome": "not applicable", "status": "verified", "next_action": "none"},
+    {"capability": "records", "source": "none", "outcome": "not applicable", "status": "verified", "next_action": "none"},
+    {"capability": "auth identities", "source": "none (single shared code, no user accounts)", "outcome": "not applicable", "status": "verified", "next_action": "none"},
+    {"capability": "authorization", "source": "none", "outcome": "not applicable", "status": "verified", "next_action": "none"},
+    {"capability": "uploaded file bytes", "source": "none (photo gallery planned, not provided)", "outcome": "not applicable", "status": "verified", "next_action": "user may supply photos later"},
+    {"capability": "external providers", "source": "Google Fonts only", "outcome": "load via link in root head", "status": "in_progress", "next_action": "verify fonts render"},
+    {"capability": "public endpoints / callbacks / webhooks / schedules", "source": "none", "outcome": "not applicable", "status": "verified", "next_action": "none"},
+    {"capability": "secrets", "source": "none", "outcome": "not applicable", "status": "verified", "next_action": "none"},
+    {"capability": "cutover", "source": "not hosted yet", "outcome": "publish from Lovable when ready", "status": "pending", "next_action": "user publishes"},
+    {"capability": "verification", "source": "-", "outcome": "build, routes, browser flow", "status": "pending", "next_action": "run checks"}
+  ]
+}
