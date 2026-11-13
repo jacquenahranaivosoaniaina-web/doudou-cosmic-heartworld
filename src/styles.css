@@ -553,6 +553,7 @@
   margin: 0 auto;
 }
 .solar-plane {
+  pointer-events: none;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -580,6 +581,7 @@
   border-radius: 50%;
   border: 1px solid color-mix(in oklch, var(--lavender) 24%, transparent);
   transform-style: preserve-3d;
+  pointer-events: none;
   animation: orbit-spin var(--period) linear infinite;
   animation-delay: var(--phase);
 }
@@ -593,6 +595,7 @@
   translate: -50% -50%;
   border-radius: 50%;
   border: 3px dotted color-mix(in oklch, var(--haze) 30%, transparent);
+  pointer-events: none;
   animation: orbit-spin 120s linear infinite;
 }
 .planet-holder {
@@ -621,6 +624,7 @@
   border-radius: 50%;
   transition: scale 0.35s;
   outline: none;
+  pointer-events: auto;
 }
 .planet-link:hover,
 .planet-link:focus-visible { scale: 1.35; }
