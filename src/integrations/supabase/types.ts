@@ -22,6 +22,7 @@ export type Database = {
           kind: string
           planet: string | null
           sort_order: number
+          storage_path: string | null
           title: string
           url: string | null
         }
@@ -32,6 +33,7 @@ export type Database = {
           kind: string
           planet?: string | null
           sort_order?: number
+          storage_path?: string | null
           title?: string
           url?: string | null
         }
@@ -42,6 +44,7 @@ export type Database = {
           kind?: string
           planet?: string | null
           sort_order?: number
+          storage_path?: string | null
           title?: string
           url?: string | null
         }
