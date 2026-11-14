@@ -789,3 +789,7 @@
   pointer-events: none;
   animation: orbit-spin 220s linear infinite reverse;
 }
+
+@media (max-width: 639px) {
+  .hud-bar-bottom { display: none; }
+}
