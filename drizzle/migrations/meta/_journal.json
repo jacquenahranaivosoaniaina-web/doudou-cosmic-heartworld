@@ -8,6 +8,13 @@
       "when": 1794639767591,
       "tag": "0000_migration",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794639793078,
+      "tag": "0001_seed_universe_media",
+      "breakpoints": true
     }
   ]
 }
