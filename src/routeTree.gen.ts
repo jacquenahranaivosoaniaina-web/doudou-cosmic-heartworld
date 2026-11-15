@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as UniversIndexRouteImport } from './routes/univers.index'
 import { Route as UniversPlanetRouteImport } from './routes/univers.$planet'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UniversIndexRoute = UniversIndexRouteImport.update({
@@ -31,30 +37,34 @@ const UniversPlanetRoute = UniversPlanetRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/univers/$planet': typeof UniversPlanetRoute
   '/univers/': typeof UniversIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/univers/$planet': typeof UniversPlanetRoute
   '/univers': typeof UniversIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/univers/$planet': typeof UniversPlanetRoute
   '/univers/': typeof UniversIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/univers/$planet' | '/univers/'
+  fullPaths: '/' | '/auth' | '/univers/$planet' | '/univers/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/univers/$planet' | '/univers'
-  id: '__root__' | '/' | '/univers/$planet' | '/univers/'
+  to: '/' | '/auth' | '/univers/$planet' | '/univers'
+  id: '__root__' | '/' | '/auth' | '/univers/$planet' | '/univers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
   UniversPlanetRoute: typeof UniversPlanetRoute
   UniversIndexRoute: typeof UniversIndexRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/univers/': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
   UniversPlanetRoute: UniversPlanetRoute,
   UniversIndexRoute: UniversIndexRoute,
 }
