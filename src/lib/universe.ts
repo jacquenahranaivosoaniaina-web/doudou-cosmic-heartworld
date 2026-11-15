@@ -22,11 +22,6 @@ export function readUnlocked(): boolean {
   }
 }
 
-export type PlanetExtra =
-  | { kind: "note"; text: string }
-  | { kind: "reveal"; button: string; message: string }
-  | { kind: "countdown" };
-
 export type PlanetLook = {
   /** Orbit diameter, as a share of the solar system width. */
   orbit: number;
@@ -46,7 +41,6 @@ export type Planet = {
   /** Short HUD codename shown in the galactic interface. */
   code: string;
   look: PlanetLook;
-  extra?: PlanetExtra;
 };
 
 export const PLANETS: Planet[] = [
@@ -65,7 +59,6 @@ export const PLANETS: Planet[] = [
     name: "Nos souvenirs",
     intro: "Chaque instant avec toi devient précieux.",
     body: "Nos sourires, nos retrouvailles après les cours et ces petits instants qui deviennent de grands souvenirs.",
-    extra: { kind: "note", text: "La galerie de nos photos personnelles sera intégrée ici." },
   },
   {
     slug: "notre-petit-monde",
@@ -74,11 +67,6 @@ export const PLANETS: Planet[] = [
     name: "Notre petit monde",
     intro: "Notre bonheur, à notre façon.",
     body: "Un petit monde à nous, fait de complicité, de rires et de détails que nous seuls pouvons comprendre.",
-    extra: {
-      kind: "reveal",
-      button: "Découvrir un défi",
-      message: "Petit défi de notre duo à découvrir bientôt !",
-    },
   },
   {
     slug: "notre-avenir",
@@ -87,11 +75,6 @@ export const PLANETS: Planet[] = [
     name: "Notre avenir",
     intro: "Tant de rêves à vivre ensemble.",
     body: "Des projets, des voyages, des rêves… et encore tant de pages à écrire ensemble.",
-    extra: {
-      kind: "reveal",
-      button: "Mission secrète",
-      message: "Imagine notre prochaine aventure à deux.",
-    },
   },
   {
     slug: "mon-univers",
@@ -100,7 +83,6 @@ export const PLANETS: Planet[] = [
     name: "Mon univers",
     intro: "Parmi des milliards d’étoiles, je te choisis, toi.",
     body: "Parmi des milliards d’étoiles, c’est toi que je choisis. Aujourd’hui, demain et dans tous les univers possibles.",
-    extra: { kind: "countdown" },
   },
 ];
 

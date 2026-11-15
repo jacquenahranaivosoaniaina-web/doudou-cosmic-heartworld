@@ -10,6 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedAtelierRouteImport } from './routes/_authenticated/atelier'
 import { Route as UniversIndexRouteImport } from './routes/univers.index'
 import { Route as UniversPlanetRouteImport } from './routes/univers.$planet'
 
@@ -17,6 +20,20 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAtelierRoute = AuthenticatedAtelierRouteImport.update({
+  id: '/atelier',
+  path: '/atelier',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const UniversIndexRoute = UniversIndexRouteImport.update({
   id: '/univers/',
@@ -31,30 +48,46 @@ const UniversPlanetRoute = UniversPlanetRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/atelier': typeof AuthenticatedAtelierRoute
   '/univers/$planet': typeof UniversPlanetRoute
   '/univers/': typeof UniversIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/atelier': typeof AuthenticatedAtelierRoute
   '/univers/$planet': typeof UniversPlanetRoute
   '/univers': typeof UniversIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/_authenticated/atelier': typeof AuthenticatedAtelierRoute
   '/univers/$planet': typeof UniversPlanetRoute
   '/univers/': typeof UniversIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/univers/$planet' | '/univers/'
+  fullPaths: '/' | '/auth' | '/atelier' | '/univers/$planet' | '/univers/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/univers/$planet' | '/univers'
-  id: '__root__' | '/' | '/univers/$planet' | '/univers/'
+  to: '/' | '/auth' | '/atelier' | '/univers/$planet' | '/univers'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/_authenticated/atelier'
+    | '/univers/$planet'
+    | '/univers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
   UniversPlanetRoute: typeof UniversPlanetRoute
   UniversIndexRoute: typeof UniversIndexRoute
 }
@@ -67,6 +100,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/atelier': {
+      id: '/_authenticated/atelier'
+      path: '/atelier'
+      fullPath: '/atelier'
+      preLoaderRoute: typeof AuthenticatedAtelierRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/univers/': {
       id: '/univers/'
@@ -85,8 +139,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAtelierRoute: typeof AuthenticatedAtelierRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAtelierRoute: AuthenticatedAtelierRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
   UniversPlanetRoute: UniversPlanetRoute,
   UniversIndexRoute: UniversIndexRoute,
 }
