@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 
 import { Burst, RevealWords, useInView } from "@/components/experiences/Reveal";
 import { mediaQuery, type MediaItem } from "@/lib/media";
@@ -42,7 +42,7 @@ function MemoryCard({ item, index, onOpen }: { item: MediaItem; index: number; o
   );
 }
 
-function Overlay({ onClose, children }: { onClose: () => void; children: React.ReactNode }) {
+function Overlay({ onClose, children }: { onClose: () => void; children: ReactNode }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
