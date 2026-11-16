@@ -14,9 +14,9 @@ function useScore(active: boolean, track: string, paused: boolean) {
   useEffect(() => {
     if (!active) return;
     const prev = ref.current;
-    if (prev && prev.dataset.src === track) return;
+    if (prev && prev.dataset["src"] === track) return;
     const next = new Audio(track);
-    next.dataset.src = track;
+    next.dataset["src"] = track;
     next.loop = true;
     next.volume = 0;
     void next.play().catch(() => undefined);
