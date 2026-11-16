@@ -3,14 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import couple from "@/assets/story/couple-cosmos.jpg";
 import galaxy from "@/assets/galaxy.jpg";
 import boots from "@/assets/story/crampons.jpg";
-import { VoiceNotes } from "@/components/experiences/AudioPlayer";
+import { FilmExperience } from "@/components/experiences/Film";
 import { Burst, RevealWords } from "@/components/experiences/Reveal";
 import { PlanetOrb } from "@/components/PlanetOrb";
 import { warp } from "@/lib/cosmos-events";
 import { FINALE_MESSAGES, LOVE_LETTER } from "@/lib/experiences";
 import { COUNTDOWN_END_SYMBOL, COUNTDOWN_START, PLANETS, SURPRISE_MESSAGE } from "@/lib/universe";
 
-type Stage = "start" | "journey" | "planets" | "heart" | "letter" | "countdown" | "chest" | "gift";
+type Stage = "start" | "journey" | "planets" | "heart" | "letter" | "film" | "countdown" | "chest" | "gift";
 const MESSAGE_MS = 2600;
 const DIAL_R = 60;
 const DIAL_C = 2 * Math.PI * DIAL_R;
@@ -130,10 +130,13 @@ export function FinaleExperience() {
               </p>
             ))}
           </article>
-          <div className="mx-auto mt-6 w-full max-w-xl">
-            <VoiceNotes planet="mon-univers" placeholder="Mon message vocal t’attendra ici très bientôt…" />
-          </div>
-          <Next onClick={() => { setCount(COUNTDOWN_START); setStage("countdown"); }}>Une dernière surprise…</Next>
+          <Next onClick={() => setStage("film")}>Notre film 🎬</Next>
+        </div>
+      )}
+
+      {stage === "film" && (
+        <div className="finale-scene">
+          <FilmExperience onDone={() => { setCount(COUNTDOWN_START); setStage("countdown"); }} />
         </div>
       )}
 

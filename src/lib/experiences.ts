@@ -8,6 +8,15 @@ import scene3 from "@/assets/story/scene-3-regard.jpg";
 import scene4 from "@/assets/story/scene-4-numero.jpg";
 import scene5 from "@/assets/story/scene-5-aout.jpg";
 import scene6 from "@/assets/story/scene-6-baiser.jpg";
+import k1 from "@/assets/film/k1-cour.jpg";
+import k2 from "@/assets/film/k2-regard.jpg";
+import k3 from "@/assets/film/k3-stylo.jpg";
+import k4 from "@/assets/film/k4-baiser.jpg";
+import k5 from "@/assets/film/k5-riviere.jpg";
+import k6 from "@/assets/film/k6-etoiles.jpg";
+import riviere from "@/assets/film/riviere-3d.jpg";
+import filmRencontre from "@/assets/music/film-rencontre.mp3.asset.json";
+import filmFinal from "@/assets/music/film-final.mp3.asset.json";
 
 /* ---------- 1. Notre rencontre ---------- */
 export type StoryScene = { img: string; chapter: string; title: string; caption: string };
@@ -123,5 +132,41 @@ export const LOVE_LETTER = [
   "Tu es mon calme, mon fou rire, mon meilleur ami et mon plus beau voyage.",
   "Merci de me choisir, chaque jour, dans tous les univers possibles.",
   "Je t’aime.",
-  "— Ta Doudou, pour toujours",
+  "— Ta Chouchou, pour toujours",
 ];
+
+/* ---------- 5b. Mini-film « Notre première rencontre » (in Mon univers, before the final surprise) ---------- */
+export const FILM_POSTER = riviere;
+export const FILM_POSTER_CAPTION = "Notre toute première photo, au bord de la rivière.";
+export const FILM_MUSIC = { rencontre: filmRencontre.url, final: filmFinal.url } as const;
+export type FilmScene = {
+  /** Start frame, also shown (with a slow camera move) until the animated clip exists. */
+  img: string;
+  /** Animated clip address; null while the clip has not been made yet. */
+  video: string | null;
+  /** Seconds the still is shown when there is no clip. */
+  seconds: number;
+  music: keyof typeof FILM_MUSIC;
+  kicker?: string;
+  title?: string;
+  text?: string;
+};
+export const FILM_SCENES: FilmScene[] = [
+  { img: k1, video: null, seconds: 9, music: "rencontre", kicker: "Chapitre I", text: "Une cour d’université, de grands arbres… et un délégué qui cherche un stylo." },
+  { img: k2, video: null, seconds: 9, music: "rencontre", kicker: "Chapitre II", text: "Un stylo noir. Un regard. Un sourire." },
+  { img: k3, video: null, seconds: 9, music: "rencontre", kicker: "Chapitre III", text: "« Merci pour le stylo… Tu t’appelles comment ? »" },
+  { img: k4, video: null, seconds: 9, music: "rencontre", kicker: "Chapitre IV", text: "Nos numéros, ses premiers messages, il m’attendait après les cours… puis notre premier baiser." },
+  { img: k5, video: null, seconds: 9, music: "final", title: "Août 2021", text: "Et notre histoire commence." },
+  { img: k6, video: null, seconds: 8, music: "final" },
+];
+export const FILM_FINALE = {
+  date: "8 décembre",
+  title: "6 ans d’amour",
+  message: [
+    "Six ans après ce premier regard, je suis toujours heureuse que nos chemins se soient croisés.",
+    "Tout a commencé par un simple stylo noir, un regard et un sourire.",
+    "Aujourd’hui, je t’offre cette petite surprise pour te rappeler combien mon amour pour toi est précieux.",
+    "Et si je pouvais recommencer cette histoire, je choisirais encore ce même moment, ce même regard et surtout… toi.",
+    "Joyeux anniversaire, mon Doudou. ❤️",
+  ],
+};

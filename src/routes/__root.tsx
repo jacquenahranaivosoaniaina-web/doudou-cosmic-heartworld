@@ -15,6 +15,7 @@ import { supabase } from "@/integrations/supabase/client";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Cosmos } from "../components/Cosmos";
+import { MusicToggle } from "../components/MusicToggle";
 
 function NotFoundComponent() {
   return (
@@ -146,6 +147,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Cosmos />
       <Outlet />
+      <MusicToggle />
     </QueryClientProvider>
   );
 }
